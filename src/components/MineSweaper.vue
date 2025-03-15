@@ -115,15 +115,15 @@ watch(solved, (newValue) => {
 })
 
 const numColors = [
-  'text-white-700',
-  'text-amber-700',
-  'text-green-700',
-  'text-red-700',
-  'text-lime-700',
-  'text-yellow-700',
-  'text-emerald-700',
-  'text-cyan-700',
-  'text-fuchsia-700'
+  'text-cyan-50',
+  'text-teal-100',
+  'text-emerald-200',
+  'text-green-300',
+  'text-lime-400',
+  'text-yellow-500',
+  'text-amber-600',
+  'text-orange-700',
+  'text-red-800'
 ]
 
 </script>

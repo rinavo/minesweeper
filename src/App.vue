@@ -6,6 +6,7 @@ import {ref} from "vue";
 const w = ref(5)
 const h = ref(5)
 const r = ref(0.1)
+const f = ref(false)
 </script>
 
 <template>
@@ -24,10 +25,10 @@ const r = ref(0.1)
         <input type="text" v-model="r" class="input" placeholder="Type here" />
       </fieldset>
 
-      <button class="mt-4 w-40 btn btn-primary" @click="">Set</button>
+      <button class="mt-4 w-40 btn btn-primary" @click="f=!f">Reset</button>
     </div>
 
-    <MineSweaper :height="h" :width="w" :generate-rate="r" :key="h-w-r"/>
+    <MineSweaper :height="h" :width="w" :generate-rate="r" :key="h-w-r-f"/>
   </main>
 </template>
 
