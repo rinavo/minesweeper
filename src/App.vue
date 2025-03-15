@@ -1,6 +1,6 @@
 <script setup>
 
-import MineSweaper from "@/components/MineSweaper.vue";
+import MineSweeper from "@/components/MineSweeper.vue";
 import {ref} from "vue";
 
 const w = ref(5)
@@ -28,7 +28,7 @@ const f = ref(false)
       <button class="mt-4 w-40 btn btn-primary" @click="f=!f">Reset</button>
     </div>
 
-    <MineSweaper :height="h" :width="w" :generate-rate="r" :key="h-w-r-f"/>
+    <MineSweeper :height="h" :width="w" :generate-rate="r" :key="h-w-r-f"/>
   </main>
 </template>
 

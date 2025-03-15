@@ -130,7 +130,7 @@ const numColors = [
 
 <template>
   <div>
-    <h5 class="text-center p-2">mine sweaper</h5>
+    <h5 class="text-center p-2">mine sweeper</h5>
 
     <div v-for="row in stateMatrix" class="flex">
       <div v-for="state in row"
