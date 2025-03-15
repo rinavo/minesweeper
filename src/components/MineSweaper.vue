@@ -115,15 +115,15 @@ watch(solved, (newValue) => {
 })
 
 const numColors = [
-  'white-300',
-  'amber-300',
-  'green-300',
-  'red-300',
-  'lime-300',
-  'yellow-300',
-  'emerald-300',
-  'cyan-300',
-  'fuchsia-300'
+  'text-white-300',
+  'text-amber-300',
+  'text-green-300',
+  'text-red-300',
+  'text-lime-300',
+  'text-yellow-300',
+  'text-emerald-300',
+  'text-cyan-300',
+  'text-fuchsia-300'
 ]
 
 </script>
@@ -148,17 +148,17 @@ const numColors = [
             </div>
           </template>
           <template v-else>
-            <div :class="[ `text-${numColors[state.adjacentMineCount]}`]">
+            <div :class="[numColors[state.adjacentMineCount]]">
               {{ state.adjacentMineCount }}
             </div>
           </template>
         </template>
         <template v-else-if="state.flag">
-          <div class="text-yellow-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M7 2h2v20H7zm12 7l-8 5.6V3.4z"/>
-            </svg>
-          </div>
+<!--          <div class="text-yellow-300">-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">-->
+<!--              <path fill="currentColor" d="M7 2h2v20H7zm12 7l-8 5.6V3.4z"/>-->
+<!--            </svg>-->
+<!--          </div>-->
         </template>
       </div>
     </div>
