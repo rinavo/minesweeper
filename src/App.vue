@@ -5,7 +5,7 @@ import MineSweaper from "@/components/MineSweaper.vue";
 
 <template>
   <main class="flex justify-center items-center w-full">
-    <MineSweaper/>
+    <MineSweaper height="5" width="10"/>
   </main>
 </template>
 

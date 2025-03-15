@@ -1,12 +1,14 @@
 <script setup>
 import {computed, reactive, ref, watch} from "vue";
 
+const props = defineProps(["width", "height"])
+
 const dev = ref(false)
 const init = ref(true)
 const over = ref(false)
 
-const WIDTH = 10
-const HEIGHT = 10
+const WIDTH = props.width || 10
+const HEIGHT = props.height || 10
 
 const stateMatrix = reactive(
     Array.from(
@@ -128,6 +130,7 @@ const numColors = [
 
 <template>
   <div>
+    <h5 class="text-center p-2">mine sweaper</h5>
     <div v-for="row in stateMatrix" class="flex">
       <div v-for="state in row"
            :id="`${state.y}-${state.x}`"
@@ -151,7 +154,7 @@ const numColors = [
           </template>
         </template>
         <template v-else-if="state.flag">
-          <div class="text-yellow-300 z-[-1]">
+          <div class="text-yellow-300">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <path fill="currentColor" d="M7 2h2v20H7zm12 7l-8 5.6V3.4z"/>
             </svg>
