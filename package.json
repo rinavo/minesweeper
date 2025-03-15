@@ -14,6 +14,7 @@
     "vue": "^3.5.13"
   },
   "devDependencies": {
+    "@iconify/json": "^2.2.317",
     "@iconify/tailwind4": "^1.0.6",
     "@vitejs/plugin-vue": "^5.2.1",
     "vite": "^6.2.1",

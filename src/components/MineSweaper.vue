@@ -31,7 +31,7 @@ const stateMatrix = reactive(
 function generateMine(init) {
   stateMatrix.forEach((row) => {
     row.forEach((state) => {
-      if (state.x !== init.x && state.y !== init.y && Math.random() < 0.3) {
+      if (state.x !== init.x && state.y !== init.y && Math.random() < 0.2) {
         state.mine = true;
       }
     })
@@ -115,15 +115,15 @@ watch(solved, (newValue) => {
 })
 
 const numColors = [
-  'text-white-300',
-  'text-amber-300',
-  'text-green-300',
-  'text-red-300',
-  'text-lime-300',
-  'text-yellow-300',
-  'text-emerald-300',
-  'text-cyan-300',
-  'text-fuchsia-300'
+  'text-white-700',
+  'text-amber-700',
+  'text-green-700',
+  'text-red-700',
+  'text-lime-700',
+  'text-yellow-700',
+  'text-emerald-700',
+  'text-cyan-700',
+  'text-fuchsia-700'
 ]
 
 </script>
@@ -136,15 +136,11 @@ const numColors = [
            :id="`${state.y}-${state.x}`"
            @click="revealMine(state)"
            @contextmenu.prevent="handleRightClick"
-           class="flex h-2 w-2 p-4 items-center justify-center bg-gray-300/10  hover:bg-gray-600 border-1"
+           class="flex h-10 w-10 items-center justify-center bg-gray-500/10  hover:bg-gray-600/30 border-2"
       >
         <template v-if="state.revealed || dev">
           <template v-if="state.mine">
-            <div class="text-red-600">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                      d="M23 13v-2h-3.07a8 8 0 0 0-1.62-3.9l2.19-2.17l-1.43-1.43l-2.17 2.19A8 8 0 0 0 13 4.07V1h-2v3.07c-1.42.18-2.77.74-3.9 1.62L4.93 3.5L3.5 4.93L5.69 7.1A8 8 0 0 0 4.07 11H1v2h3.07c.18 1.42.74 2.77 1.62 3.9L3.5 19.07l1.43 1.43l2.17-2.19c1.13.88 2.48 1.44 3.9 1.62V23h2v-3.07c1.42-.18 2.77-.74 3.9-1.62l2.17 2.19l1.43-1.43l-2.19-2.17a8 8 0 0 0 1.62-3.9zM12 8a4 4 0 0 0-4 4H6a6 6 0 0 1 6-6z"/>
-              </svg>
+            <div class="text-red-600 icon-[mdi--mine]">
             </div>
           </template>
           <template v-else>
@@ -154,11 +150,8 @@ const numColors = [
           </template>
         </template>
         <template v-else-if="state.flag">
-<!--          <div class="text-yellow-300">-->
-<!--            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">-->
-<!--              <path fill="currentColor" d="M7 2h2v20H7zm12 7l-8 5.6V3.4z"/>-->
-<!--            </svg>-->
-<!--          </div>-->
+          <div class="text-yellow-500 icon-[mdi--flag]">
+          </div>
         </template>
       </div>
     </div>
