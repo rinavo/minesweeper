@@ -1,6 +1,5 @@
 # mine-sweaper
-
-This template should help get you started developing with Vue 3 in Vite.
+vue3 简易扫雷实现
 
 ## Recommended IDE Setup
 
