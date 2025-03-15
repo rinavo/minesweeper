@@ -115,16 +115,21 @@ watch(solved, (newValue) => {
 })
 
 const numColors = [
-  'text-cyan-50',
-  'text-teal-100',
-  'text-emerald-200',
-  'text-green-300',
-  'text-lime-400',
-  'text-yellow-500',
-  'text-amber-600',
+  'text-gray-700/10',
+  'text-teal-700',
+  'text-emerald-700',
+  'text-green-700',
+  'text-lime-700',
+  'text-yellow-700',
+  'text-amber-700',
   'text-orange-700',
   'text-red-800'
 ]
+
+function blockColor(x,y) {
+  return stateMatrix[y][x].mine && stateMatrix[y][x].revealed ? 'bg-pink-200' :
+      stateMatrix[y][x].revealed ? 'bg-gray-500/50' :'bg-gray-500/20'
+}
 
 </script>
 
@@ -137,7 +142,8 @@ const numColors = [
            :id="`${state.y}-${state.x}`"
            @click="revealMine(state)"
            @contextmenu.prevent="handleRightClick"
-           class="flex h-10 w-10 items-center justify-center bg-gray-500/10  hover:bg-gray-600/30 border-2"
+           class="flex h-10 w-10 items-center justify-center   hover:bg-gray-600/40 border-1"
+           :class="[blockColor(state.x, state.y)]"
       >
         <template v-if="state.revealed || dev">
           <template v-if="state.mine">
@@ -146,7 +152,7 @@ const numColors = [
           </template>
           <template v-else>
             <div :class="[numColors[state.adjacentMineCount]]">
-              {{ state.adjacentMineCount }}
+              {{ state.adjacentMineCount === 0 ? '' : state.adjacentMineCount }}
             </div>
           </template>
         </template>
