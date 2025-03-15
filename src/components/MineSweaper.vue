@@ -1,20 +1,20 @@
 <script setup>
 import {computed, reactive, ref, watch} from "vue";
 
-const props = defineProps(["width", "height"])
+const props = defineProps(["width", "height", "generateRate"])
 
 const dev = ref(false)
 const init = ref(true)
 const over = ref(false)
-
-const WIDTH = props.width || 10
-const HEIGHT = props.height || 10
+const generateRate = ref(props.generateRate || 0.1)
+const width = ref(props.width || 10)
+const height = ref(props.height || 10)
 
 const stateMatrix = reactive(
     Array.from(
-        {length: HEIGHT},
+        {length: height.value},
         (v, y) => Array.from(
-            {length: WIDTH}, (v, x) => {
+            {length: width.value}, (v, x) => {
               return {
                 x,
                 y,
@@ -31,7 +31,7 @@ const stateMatrix = reactive(
 function generateMine(init) {
   stateMatrix.forEach((row) => {
     row.forEach((state) => {
-      if (state.x !== init.x && state.y !== init.y && Math.random() < 0.2) {
+      if (state.x !== init.x && state.y !== init.y && Math.random() < generateRate.value) {
         state.mine = true;
       }
     })
@@ -109,7 +109,7 @@ const solved = computed(() => {
 })
 
 watch(solved, (newValue) => {
-  if (newValue&&!over.value) {
+  if (newValue && !over.value) {
     alert("pass")
   }
 })
@@ -131,6 +131,7 @@ const numColors = [
 <template>
   <div>
     <h5 class="text-center p-2">mine sweaper</h5>
+
     <div v-for="row in stateMatrix" class="flex">
       <div v-for="state in row"
            :id="`${state.y}-${state.x}`"

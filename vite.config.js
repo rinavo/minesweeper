@@ -11,7 +11,6 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     tailwindcss(),
-
   ],
   resolve: {
     alias: {
