@@ -142,7 +142,7 @@ function blockColor(x,y) {
            :id="`${state.y}-${state.x}`"
            @click="revealMine(state)"
            @contextmenu.prevent="handleRightClick"
-           class="flex h-10 w-10 items-center justify-center   hover:bg-gray-600/40 border-1"
+           class="flex h-10 w-10 items-center justify-center  hover:bg-gray-600/40 m-0.5"
            :class="[blockColor(state.x, state.y)]"
       >
         <template v-if="state.revealed || dev">
