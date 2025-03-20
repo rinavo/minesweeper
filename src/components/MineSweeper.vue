@@ -55,10 +55,9 @@ function revealMine(state) {
   }
 }
 
-function handleRightClick(event) {
-  console.log('右键被点击了', event);
-  const [y, x] = event.target.id.split('-')
-  console.log(y, x)
+function handleRightClick(state) {
+  console.log('右键被点击了，坐标', state.y, state.x);
+  const {y, x} = state
   stateMatrix[y][x].flag = !stateMatrix[y][x].flag
 }
 
@@ -126,9 +125,9 @@ const numColors = [
   'text-red-800'
 ]
 
-function blockColor(x,y) {
+function blockColor(x, y) {
   return stateMatrix[y][x].mine && stateMatrix[y][x].revealed ? 'bg-pink-200' :
-      stateMatrix[y][x].revealed ? 'bg-gray-500/50' :'bg-gray-500/20'
+      stateMatrix[y][x].revealed ? 'bg-gray-500/50' : 'bg-gray-500/20'
 }
 
 </script>
@@ -141,7 +140,7 @@ function blockColor(x,y) {
       <div v-for="state in row"
            :id="`${state.y}-${state.x}`"
            @click="revealMine(state)"
-           @contextmenu.prevent="handleRightClick"
+           @contextmenu.prevent="handleRightClick(state)"
            class="flex h-10 w-10 items-center justify-center  hover:bg-gray-600/40 m-0.5"
            :class="[blockColor(state.x, state.y)]"
       >
