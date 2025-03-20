@@ -13,8 +13,8 @@ const height = ref(props.height || 10)
 const stateMatrix = reactive(
     Array.from(
         {length: height.value},
-        (v, y) => Array.from(
-            {length: width.value}, (v, x) => {
+        (_, y) => Array.from(
+            {length: width.value}, (_, x) => {
               return {
                 x,
                 y,
@@ -133,7 +133,7 @@ function blockColor(x, y) {
 </script>
 
 <template>
-  <div>
+  <div class="mine-sweeper-container">
     <h5 class="text-center p-2">mine sweeper</h5>
 
     <div v-for="row in stateMatrix" class="flex">
