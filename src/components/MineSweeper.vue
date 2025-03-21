@@ -1,5 +1,5 @@
 <script setup>
-import {computed, reactive, ref, watch} from "vue";
+import {computed, reactive, ref, unref, watch} from "vue";
 
 const props = defineProps(["width", "height", "generateRate"])
 
@@ -12,9 +12,9 @@ const height = ref(props.height || 10)
 
 const stateMatrix = reactive(
     Array.from(
-        {length: height.value},
+        {length: unref(height)},
         (_, y) => Array.from(
-            {length: width.value}, (_, x) => {
+            {length: unref(width)}, (_, x) => {
               return {
                 x,
                 y,
@@ -31,7 +31,7 @@ const stateMatrix = reactive(
 function generateMine(init) {
   stateMatrix.forEach((row) => {
     row.forEach((state) => {
-      if (state.x !== init.x && state.y !== init.y && Math.random() < generateRate.value) {
+      if (state.x !== init.x && state.y !== init.y && Math.random() < unref(generateRate)) {
         state.mine = true;
       }
     })
@@ -103,9 +103,9 @@ function revealAll() {
   })
 }
 
-const solved = computed(() => {
-  return stateMatrix.every((row) => row.every((state) => state.revealed || state.flag && state.mine))
-})
+const solved = computed(() =>
+    stateMatrix.every((row) => row.every((state) => state.revealed || state.flag && state.mine))
+)
 
 watch(solved, (newValue) => {
   if (newValue && !over.value) {
